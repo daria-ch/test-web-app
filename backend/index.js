@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const users = require('./app/users');
-// const categories = require('./app/categories');
+const categories = require('./app/categories');
 // const articles = require('./app/articles');
 
 const mysqlDb = require('./mysqlDb');
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.static('public'));
 
 app.use('/users', users);
-// app.use('/categories', categories);
+app.use('/categories', categories);
 // app.use('/articles', articles);
 
 const run = async () => {
