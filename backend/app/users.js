@@ -10,6 +10,16 @@ router.get('/', async (req, res) => {
     res.send(users);
 });
 
+router.get('/:id', async (req, res) => {
+    const user = await mysqlDb.getConnection().query('SELECT * FROM `users` WHERE `id`= ?', req.params.id);
+    let profile = user[0];
+    if (!profile) {
+        return res.status(400).send({message: 'Not found'})
+    } else {
+        res.send(profile);
+    }
+});
+
 router.post('/', async (req, res) => {
     const user = req.body;
     const password = user.password;
