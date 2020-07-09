@@ -27,20 +27,19 @@ router.post('/', async (req, res) => {
     try {
         if (!user.username) {
             res.status(400).send({error: "Username cannot be empty"});
-        }
-        if (!user.password) {
+        } else if (!user.password) {
             res.status(400).send({error: "Password cannot be empty"});
-        }
-
-        await bcrypt.genSalt(saltRounds, function (err, salt) {
-            bcrypt.hash(password, salt, function (err, hash) {
-                const result = mysqlDb.getConnection().query('INSERT INTO `users` (`id`, `username`, `password`) VALUES ' +
-                    '(?, ?, ?)',
-                    [user.id, user.username, hash]
-                );
-                res.send({username: user.username, password: hash, id: result.insertId});
+        } else {
+            await bcrypt.genSalt(saltRounds, function (err, salt) {
+                bcrypt.hash(password, salt, function (err, hash) {
+                    const result = mysqlDb.getConnection().query('INSERT INTO `users` (`id`, `username`, `password`) VALUES ' +
+                        '(?, ?, ?)',
+                        [user.id, user.username, hash]
+                    );
+                    res.send({username: user.username, password: hash, id: result.insertId});
+                });
             });
-        });
+        }
     } catch (error) {
         res.send({'error': error.sqlMessage})
     }
@@ -62,19 +61,18 @@ router.put('/:id', async (req, res) => {
     try {
         if (!newUser.username) {
             res.status(400).send({error: "Username cannot be empty"});
-        }
-        if (!newUser.password) {
+        } else if (!newUser.password) {
             res.status(400).send({error: "Password cannot be empty"});
-        }
-
-        await bcrypt.genSalt(saltRounds, function (err, salt) {
-            bcrypt.hash(password, salt, function (err, hash) {
-                const result = mysqlDb.getConnection().query('UPDATE `users` SET `username` = ?, `password` = ? WHERE `id` = ?',
-                    [newUser.username, hash, req.params.id]
-                );
-                res.send({username: newUser.username, password: hash});
+        } else {
+            await bcrypt.genSalt(saltRounds, function (err, salt) {
+                bcrypt.hash(password, salt, function (err, hash) {
+                    const result = mysqlDb.getConnection().query('UPDATE `users` SET `username` = ?, `password` = ? WHERE `id` = ?',
+                        [newUser.username, hash, req.params.id]
+                    );
+                    res.send({username: newUser.username, password: hash});
+                });
             });
-        });
+        }
     } catch (error) {
         res.send({'error': error.sqlMessage})
     }
