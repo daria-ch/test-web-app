@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-// const users = require('./app/users');
+const users = require('./app/users');
 // const categories = require('./app/categories');
 // const articles = require('./app/articles');
 
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 
-// app.use('/users', users);
+app.use('/users', users);
 // app.use('/categories', categories);
 // app.use('/articles', articles);
 
