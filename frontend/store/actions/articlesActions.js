@@ -16,8 +16,12 @@ export const fetchArticlesRequest = () => ({type: FETCH_ARTICLES_REQUEST});
 
 export const fetchArticles = () => {
     return async dispatch => {
-        const response = await axiosApi.get('/articles');
-        dispatch(fetchArticlesSuccess(response.data));
+        try {
+            const response = await axiosApi.get('/articles');
+            dispatch(fetchArticlesSuccess(response.data));
+        } catch (e) {
+            dispatch(fetchArticlesFailure(e));
+        }
     }
 };
 

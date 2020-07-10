@@ -15,7 +15,7 @@ const initialState = {
 const articlesReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_ARTICLES_SUCCESS:
-            return {...state, users: action.articles};
+            return {...state, articles: action.articles};
         case FETCH_SINGLE_ARTICLE_SUCCESS:
             return {...state, article: action.article};
         case FETCH_ARTICLES_FAILURE:
