@@ -35,4 +35,4 @@ const categoriesReducer = (state = initialState, action) => {
 };
 
 
-export default categoriesReducer();
+export default categoriesReducer;

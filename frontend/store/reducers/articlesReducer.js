@@ -36,4 +36,4 @@ const articlesReducer = (state = initialState, action) => {
 };
 
 
-export default articlesReducer();
+export default articlesReducer;
