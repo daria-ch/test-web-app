@@ -5,7 +5,7 @@ import {
     FETCH_USERS_SUCCESS, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS,
     POST_USER_SUCCESS
 } from "./actionTypes";
-import axiosApi from "../../axiosApi";
+import axiosApi from "../../../axiosApi";
 
 
 export const fetchUsersSuccess = users => ({type: FETCH_USERS_SUCCESS, users});

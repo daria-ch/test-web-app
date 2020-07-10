@@ -1,4 +1,4 @@
-import axiosApi from "../../axiosApi";
+import axiosApi from "../../../axiosApi";
 import {
     EDIT_ARTICLE_SUCCESS, FETCH_ARTICLES_FAILURE, FETCH_ARTICLES_REQUEST,
     FETCH_ARTICLES_SUCCESS,
