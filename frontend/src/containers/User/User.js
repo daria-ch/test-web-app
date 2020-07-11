@@ -6,12 +6,6 @@ import {deleteUser, fetchSingleUser} from "../../store/actions/usersActions";
 
 
 class User extends Component {
-
-    state = {
-        username: '',
-        password: ''
-    }
-
     async componentDidMount() {
         await this.props.fetchSingleUser(this.props.match.params.id);
     }

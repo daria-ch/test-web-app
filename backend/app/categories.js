@@ -8,6 +8,16 @@ router.get('/', async (req, res) => {
     res.send(categories);
 });
 
+router.get('/:id', async (req, res) => {
+    const category = await mysqlDb.getConnection().query('SELECT * FROM `categories` WHERE `id`= ?', req.params.id);
+    let title = category[0];
+    if (!title) {
+        return res.status(400).send({message: 'Not found'})
+    } else {
+        res.send(title);
+    }
+});
+
 router.post('/', async (req, res) => {
     const category = req.body;
 
