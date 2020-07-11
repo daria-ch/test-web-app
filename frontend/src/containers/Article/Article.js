@@ -13,6 +13,7 @@ class Article extends Component {
     goBack = () => {
         this.props.history.push('/');
     }
+
     deleteArticle = (id) => {
         this.props.deleteArticle(id);
         this.props.history.push('/');

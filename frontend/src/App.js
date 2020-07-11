@@ -9,6 +9,10 @@ import EditArticle from "./containers/Article/EditArticle";
 import NewArticle from "./containers/Article/NewArticle";
 import Admin from "./containers/Admin/Admin";
 import Users from "./containers/Users/Users";
+import Categories from "./containers/Categories/Categories";
+import NewUser from "./containers/User/NewUser";
+import User from "./containers/User/User";
+import EditUser from "./containers/User/EditUser";
 
 class App extends Component {
     render() {
@@ -27,6 +31,13 @@ class App extends Component {
                         <Route path="/articles/:id/edit" exact component={EditArticle}/>
                         <Route path="/articles/:id" exact component={Article}/>
                         <Route path="/users" exact component={Users}/>
+                        <Route path="/users/new" exact component={NewUser}/>
+                        <Route path="/users/:id" exact component={User}/>
+                        <Route path="/users/:id/edit" exact component={EditUser}/>
+                        <Route path="/categories" exact component={Categories}/>
+                        <Route path="/categories/new" exact component={Categories}/>
+                        <Route path="/categories/:id" exact component={Categories}/>
+                        <Route path="/categories/:id/edit" exact component={Categories}/>
                         <Route render={() => <h1>Not found</h1>}/>
                     </Switch>
                 </Container>

@@ -39,8 +39,12 @@ export const logoutUser = () => {
 
 export const fetchUsers = () => {
     return async dispatch => {
-        const response = await axiosApi.get('/users');
-        dispatch(fetchUsersSuccess(response.data));
+        try {
+            const response = await axiosApi.get('/users');
+            dispatch(fetchUsersSuccess(response.data));
+        } catch (e) {
+            dispatch(fetchUsersFailure(e));
+        }
     }
 };
 

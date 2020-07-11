@@ -11,7 +11,7 @@ class Admin extends Component {
                 <ListGroup>
                     <ListGroupItem tag={Link} to={'/users'}>Users</ListGroupItem>
                     <ListGroupItem tag={Link} to={'/articles'}>Articles</ListGroupItem>
-                    <ListGroupItem>Categories</ListGroupItem>
+                    <ListGroupItem tag={Link} to={'/categories'}>Categories</ListGroupItem>
                 </ListGroup>
             </div>
         );

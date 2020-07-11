@@ -9,7 +9,7 @@ import ArticleItem from "../../components/ArticleItem/ArticleItem";
 class Articles extends Component {
 
     async componentDidMount() {
-        this.props.fetchArticles();
+        await this.props.fetchArticles();
     }
 
 
