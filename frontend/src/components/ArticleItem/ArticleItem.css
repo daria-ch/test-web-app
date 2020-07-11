@@ -1,0 +1,15 @@
+.article-item {
+    border: 1px solid #a7b7f2;
+    margin: 5px 0;
+    padding: 3px;
+}
+
+
+.article-header {
+    font-size: 14px;
+    margin: 0;
+}
+
+.article-link {
+    padding: 0;
+}

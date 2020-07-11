@@ -2,10 +2,10 @@ import {
     EDIT_USER_SUCCESS,
     FETCH_SINGLE_USER_SUCCESS,
     FETCH_USERS_FAILURE, FETCH_USERS_REQUEST,
-    FETCH_USERS_SUCCESS, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS,
+    FETCH_USERS_SUCCESS, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER,
     POST_USER_SUCCESS
 } from "./actionTypes";
-import axiosApi from "../../../axiosApi";
+import axiosApi from "../../axiosApi";
 
 
 export const fetchUsersSuccess = users => ({type: FETCH_USERS_SUCCESS, users});
@@ -17,6 +17,7 @@ export const fetchUsersRequest = () => ({type: FETCH_USERS_REQUEST});
 
 export const loginUserSuccess = login => ({type: LOGIN_USER_SUCCESS, login});
 export const loginUserFailure = error => ({type: LOGIN_USER_FAILURE, error});
+export const logoutUserSuccess = () => ({type: LOGOUT_USER});
 
 export const loginUser = userData => {
     return async dispatch => {
@@ -25,6 +26,12 @@ export const loginUser = userData => {
         } catch (e) {
             dispatch(loginUserFailure(e));
         }
+    }
+};
+
+export const logoutUser = () => {
+    return async dispatch => {
+        await dispatch(logoutUserSuccess());
     }
 };
 

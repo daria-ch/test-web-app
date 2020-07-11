@@ -1,10 +1,10 @@
-import axiosApi from "../../../axiosApi";
 import {
     EDIT_ARTICLE_SUCCESS, FETCH_ARTICLES_FAILURE, FETCH_ARTICLES_REQUEST,
     FETCH_ARTICLES_SUCCESS,
     FETCH_SINGLE_ARTICLE_SUCCESS,
     POST_ARTICLE_SUCCESS
 } from "./actionTypes";
+import axiosApi from "../../axiosApi";
 
 
 export const fetchArticlesSuccess = articles => ({type: FETCH_ARTICLES_SUCCESS, articles});

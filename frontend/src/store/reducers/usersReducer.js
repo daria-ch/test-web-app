@@ -3,7 +3,7 @@ import {
     FETCH_SINGLE_USER_SUCCESS,
     FETCH_USERS_FAILURE,
     FETCH_USERS_REQUEST,
-    FETCH_USERS_SUCCESS, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS
+    FETCH_USERS_SUCCESS, LOGIN_USER_FAILURE, LOGIN_USER_SUCCESS, LOGOUT_USER
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -36,6 +36,8 @@ const usersReducer = (state = initialState, action) => {
             return {...state, login: action.login, loginError: null};
         case LOGIN_USER_FAILURE:
             return {...state, loginError: action.error};
+        case LOGOUT_USER:
+            return {...state, login: null};
         default:
             return state;
     }
