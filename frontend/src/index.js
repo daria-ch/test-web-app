@@ -1,55 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import thunk from "redux-thunk";
-import {BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {Provider} from 'react-redux';
+import {ConnectedRouter} from 'connected-react-router' ;
+import PropTypes from 'prop-types';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
-import usersReducer from "./store/reducers/usersReducer";
-import categoriesReducer from "./store/reducers/categoriesReducer";
-import articlesReducer from "./store/reducers/articlesReducer";
+import configureStore, {history} from "./store/configureStore";
 import {loadState, saveState} from "./store/localStorage";
-
-
-const rootReducer = combineReducers({
-    users: usersReducer,
-    categories: categoriesReducer,
-    articles: articlesReducer
-});
-
-export default function configureStore(preloadedState) {
-    const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const store = createStore(
-        rootReducer,
-        preloadedState,
-        composeEnhancer(
-            applyMiddleware(
-                thunk
-            ),
-        ),
-    );
-    return store;
-};
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore(loadState());
 
 store.subscribe(() => {
     saveState({
         users: {
-            login: store.getState().users.login,
+            login: store.getState().users.login
         }
     });
 });
 
+const Application = ({history}) => {
+    return (
+        <ConnectedRouter history={history}>
+            <App/>
+        </ConnectedRouter>
+
+    )
+};
+
+Application.propTypes = {
+    history: PropTypes.object,
+};
+
+
 const app = (
     <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
+        <Application history={history}/>
     </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));
-serviceWorker.unregister();
+

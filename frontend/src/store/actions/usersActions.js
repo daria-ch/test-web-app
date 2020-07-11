@@ -6,6 +6,7 @@ import {
     POST_USER_SUCCESS
 } from "./actionTypes";
 import axiosApi from "../../axiosApi";
+import {push} from 'connected-react-router';
 
 
 export const fetchUsersSuccess = users => ({type: FETCH_USERS_SUCCESS, users});
@@ -32,6 +33,7 @@ export const loginUser = userData => {
 export const logoutUser = () => {
     return async dispatch => {
         await dispatch(logoutUserSuccess());
+        await dispatch(push('/'));
     }
 };
 

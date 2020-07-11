@@ -19,6 +19,7 @@ const ArticleItem = ({title, description, image, category, user, id}) => {
                 </Media>
                 <NavLink tag={RouterNavLink} to={'/articles/' + id} active className='article-link'>Read
                     more...</NavLink>
+
             </Media>
         </Media>
     );

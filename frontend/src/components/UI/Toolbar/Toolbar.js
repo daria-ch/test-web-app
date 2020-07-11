@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink as RouterNavLink} from 'react-router-dom';
+import {Link, NavLink as RouterNavLink} from 'react-router-dom';
 import {Button, Navbar, NavbarBrand, NavLink} from 'reactstrap';
 import {connect} from "react-redux";
 import {logoutUser} from "../../../store/actions/usersActions";
@@ -15,8 +15,11 @@ class Toolbar extends Component {
         return (
             <Navbar color="light" light expand="md" style={{display: 'flex', justifyContent: 'space-between'}}>
                 <NavbarBrand tag={RouterNavLink} to="/">News</NavbarBrand>
-                {!this.props.login ? <NavLink tag={RouterNavLink} to="/login">Login</NavLink> :
-                    <Button color="link" onClick={this.onButtonClick}>Log out</Button>}
+                <div>
+                    {this.props.login ? <Button color="link" tag={Link} to={'/admin'}>Admin</Button> : null}
+                    {!this.props.login ? <NavLink tag={RouterNavLink} to="/login">Login</NavLink> :
+                        <Button color="link" onClick={this.onButtonClick}>Log out</Button>}
+                </div>
             </Navbar>
         );
     }
