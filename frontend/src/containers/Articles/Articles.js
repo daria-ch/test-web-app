@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import {Button} from "reactstrap";
 import {fetchArticles} from "../../store/actions/articlesActions";
 import ArticleItem from "../../components/ArticleItem/ArticleItem";
+
 
 class Articles extends Component {
 
@@ -14,6 +17,7 @@ class Articles extends Component {
 
         return (
             <div>
+                {this.props.login ? <Button tag={Link} to={'/articles/new'}>New article</Button> : null}
                 {
                     this.props.articles.reverse().map(article => {
                         return <ArticleItem
@@ -30,7 +34,8 @@ class Articles extends Component {
 }
 
 const mapStateToProps = state => ({
-    articles: state.articles.articles
+    articles: state.articles.articles,
+    login: state.users.login
 })
 const mapDispatchToProps = dispatch => ({
     fetchArticles: () => dispatch(fetchArticles())
