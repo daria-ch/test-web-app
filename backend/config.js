@@ -9,6 +9,7 @@ module.exports = {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'news'
+        database: 'news',
+        insecureAuth : true
     }
 };
